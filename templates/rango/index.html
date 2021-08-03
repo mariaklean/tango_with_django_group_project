@@ -7,8 +7,8 @@
 
 {% block body_block %}    
 
-    <h1>Rango says... </h1>
-        <div>
+    <h1>Spot</h1>
+        <div> 
             {% if user.is_authenticated %}
                 howdy {{ user.username }}!
             {% else %}
@@ -16,6 +16,10 @@
             {% endif %}<br/>
             <strong>{{ boldmessage }}</strong><br/>
         
+        </div>
+        <div>
+            <h2>Overview of Spot</h2>
+            <p>Spot is a place where nearby restaurants can be found, reviews can be read and writted and also see where exactly the restaurant is located using google maps.</p>
         </div>
         <h2>Most Liked Categories</h2>
         <div>
