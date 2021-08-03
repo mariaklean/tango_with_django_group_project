@@ -20,36 +20,13 @@
         <div>
             <h2>Overview of Spot</h2>
             <p>Spot is a place where nearby restaurants can be found, reviews can be read and writted and also see where exactly the restaurant is located using google maps.</p>
-        </div>
-        <h2>Most Liked Categories</h2>
-        <div>
-            {% if categories %}
-                <ul>
-                {% for category in categories %}
-                    <li><a href="/rango/category/{{ category.slug }}/">{{ category.name }}</a>
-                {% endfor %}
-                </ul>
-            {% else %}
-                <strong>There are no categories present.</strong>
-            {% endif %}
-            </div>
+            <img src="{% static 'images/favicon.png' %}"
+            alt="Picture of logo" />
+            <a href="{% url 'rango:about' %}"><button>Learn more</button></a>
 
+        
 
-        <h2>Most Viewd Pages</h2>
-        <div>
-            {% if pages %}
-                <ul>
-                {% for page in pages %}
-                    <li><a href="{{ page.url }}">{{ page.title }}</a></li>
-                {% endfor %}
-                </ul>
-            {% else %}
-                <strong>There are no pages present.</strong>
-            {% endif %}
-            </div>
 
            
-            <img src="{% static 'images/rango.jpg' %}"
-                alt="Picture of rango" /> <!-- New line -->
             
 {% endblock %}
