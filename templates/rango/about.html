@@ -6,20 +6,29 @@
 {% endblock %}
 
 {% block body_block %} 
-    
-        <h1>Rango says... </h1>
-        <div>
-            here is the about page.<br/>
-            This tutorial has been put together by
-            <strong>{{boldmessage}}</strong><br/>
-            <p>Visits: {{ visits }}</p>
-        
-        </div>
-        <div>
-            <img src="{% static 'images/rango.jpg' %}"
-                alt="Picture of rango" /> <!-- New line -->
-            <img src="http://127.0.0.1:8000/media/cat.jpg"
-                alt="Picture of a Cat." />
+    <h1>About us </h1>
+
+        <div class="row">
+            <div class="column">
+                <p>
+                This project has been made by Pythoneers in Action. A team of 4 postgraduate students at University of Glasgow.
+                Let's find out some more information about each one:
+                Maria has previously studied Mathematics and now is doing 
+                a software Development master. She likes cooking and hanging out with friends
+                </p>
+                <p>Visits: {{ visits }}</p>
             </div>
-            
+            <div class="column">
+                <img src="{% static 'images/gla.jpg' %}"
+                alt="Picture of rango" /> <!-- New line -->
+               <!-- <img src="http://127.0.0.1:8000/media/cat.jpg"
+                alt="Picture of a Cat." /> -->
+                <h3>Contact Us</h3>
+                <ul>
+                    <li>Telephone: 1234456</li>
+                    <li>Address: asdfgghh </li>
+                </ul>
+            </div>
+          
+        </div>       
 {% endblock %}

@@ -1,2 +1,15 @@
-
-  
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 5vw);
+    grid-gap: 15px;
+}
+.row {
+    display: flex;
+}
+.column {
+    flex: 50%;
+}
+.hi{
+background-color: red;    
+}
