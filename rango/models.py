@@ -33,6 +33,9 @@ class Review(models.Model):
     class Meta:
         verbose_name_plural = 'Reviews'
 
+    def __str__(self):
+        return str(self.rating)
+
 
 class Location(models.Model):
     POSTCODE_MAX_LENGHT = 50

@@ -1,4 +1,4 @@
-from rango.models import Category
+from rango.models import Category, Restaurant, Review
 from django.shortcuts import render
 from rango.models import Page
 from rango.forms import CategoryForm
@@ -6,6 +6,8 @@ from django.urls import reverse
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
+from urllib.parse import urlencode
+from django.contrib.auth.models import User
 
 from rango.forms import PageForm
 
@@ -18,12 +20,18 @@ def index(request):
     category_list = Category.objects.order_by('-likes')[:5]
     page_list = Page.objects.order_by('-views')[:5]
 
+    restaurant_list = Restaurant.objects.order_by('name')
+
     context_dict = {}
     context_dict['boldmessage'] = 'Crunchy, creamy, cookie, candy, cupcake!'
     context_dict = {'categories': category_list, 'pages': page_list}
     # Call the helper function to handle the cookies
     visitor_cookie_handler(request)
     context_dict['visits'] = request.session['visits']
+
+    # add restaurants to index page
+    context_dict['restaurants'] = restaurant_list
+
     # Render the response and send it back!
     response = render(request, 'rango/index.html', context=context_dict)
 
@@ -40,6 +48,45 @@ def about(request):
         print("TEST COOKIE WORKED!")
         request.session.delete_test_cookie()
     return render(request, 'rango/about.html', context=context_dict)
+
+
+def show_restaurant(request, restaurant_name_slug):
+    context_dict = {}
+
+    restaurant = Restaurant.objects.get(slug=restaurant_name_slug)
+    location = restaurant.location
+    print(restaurant.id)
+    reviews = Review.objects.filter(restaurant__id=restaurant.id)
+    for review in reviews:
+        print(review.user)
+        print(review.review)
+
+    # build the url for google maps
+    url_base = "https://maps.googleapis.com/maps/api/staticmap?"
+    params = {
+        'center': str(location.latitude)+','+str(location.longitude),
+        'zoom': '16',
+        'size': '500x400',
+        'key': 'AIzaSyAbk3bAYXqPu8jSvHbBb-BBDfEbgBtiXJ8',
+        'markers': 'color:red|'+str(location.latitude)+','+str(location.longitude),
+    }
+
+    encoded_params = urlencode(params)
+    print(encoded_params)
+    url = url_base+encoded_params
+    context_dict['google_url'] = url
+
+
+    try:
+        context_dict['restaurant'] = restaurant
+        context_dict['reviews'] = reviews
+    except Restaurant.DoesNotExist:
+        context_dict['restaurant'] = None
+        context_dict['reviews'] = None
+
+    return render(request, 'rango/show_restaurant.html', context=context_dict)
+
+
 
 
 def show_category(request, category_name_slug):

@@ -1,0 +1,41 @@
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    {% if restaurant %}
+        {{ restaurant.name }}
+    {% endif %}
+{% endblock %}
+
+{% block body_block %}
+    {% if restaurant %}
+        <div class="Row">
+            <h1>{{ restaurant.name }}</h1>
+        </div>
+        <div class="row">
+            <div class="column">
+                <img src="/static/images/restaurants/{{restaurant.slug}}.jpg" alt="{{restaurant.slug}}" width="200px", height="200px"/>
+            </div>
+            <div class="column">
+                <img src="{{ google_url }}">
+            </div>
+        </div>
+    {% endif %}
+    {% if reviews %}
+        {% for review in reviews %}
+            <div class="row">
+                <div class="column">
+                    {{review.user}}
+                </div>
+                <div class="column">
+                    {{review.review}}
+                </div>
+                <div class="column">
+                    {{review.rating}}
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+
+{% endblock %}
