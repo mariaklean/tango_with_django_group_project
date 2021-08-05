@@ -1,2 +1,5 @@
 /db.sqlite3
 .idea
+
+rango/__pycache__/
+rango/migrations/__pycache__/
