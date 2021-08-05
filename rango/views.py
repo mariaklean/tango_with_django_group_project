@@ -128,8 +128,8 @@ def add_page(request, category_name_slug):
 
 
 @login_required
-def restricted(request):
-    return render(request, 'rango/restricted.html')
+def browse(request):
+    return render(request, 'rango/browse.html')
 
 
 # Use the login_required() decorator to ensure only those logged in can

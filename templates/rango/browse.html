@@ -1,0 +1,37 @@
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+  Browse page
+{% endblock %}
+
+<!-- Browse page will be the page where the results of the nearby restaurants will appear.
+-->
+{% block body_block %} 
+<h2>Below you can see your nearby restaurants</h2>
+<div class="gallery">
+  <a target="_blank" href="{% static 'images/spot.png' %}">
+    <img src="{% static 'images/spot.png' %}" alt="Cinque Terre" width="600" height="400">
+  </a>
+  <div class="desc">Add a description of the image here</div>
+</div>
+
+<div class="gallery">
+  <a target="_blank" href="https://www.google.com">
+    <img src="{% static 'images/spot.png' %}" alt="Cinque Terre" width="600" height="400">
+  </a>
+  <div class="desc">Add a description of the image here</div>
+</div>
+
+<div class="gallery">
+  <a target="_blank" href="https://www.google.com">
+    <img src="{% static 'images/spot.png' %}" alt="Cinque Terre" width="600" height="400">
+  </a>
+  <div class="desc">Add a description of the image here</div>
+</div>
+
+
+
+</div>
+
+{% endblock %}
