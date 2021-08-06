@@ -2,36 +2,39 @@
 {% load staticfiles %}
 
 {% block title_block %}
-  HomePage
+HomePage
 {% endblock %}
 
 {% block body_block %}    
 
-<h1>Spot</h1>
-    <div>
+
+    <div> 
+
     <div class="row">
         <div class="column"> 
-                {% if user.is_authenticated %}
-                    howdy {{ user.username }}!
-                {% else %}
-                    Welcome to our community!
-                {% endif %}<br/>
-                <strong>{{ boldmessage }}</strong><br/>
-                <h2>Overview of Spot</h2>
-            <p>Spot is a place where nearby restaurants can be found, reviews can be read and writted and also see where exactly the restaurant is located using google maps.
-                By making a review, other people are helped to choose the right place to eate, they can also see what is best on each place. Our community will be a safe place where everyone would be able 
-                to express his opinion without any judgement, however please be polite and respect each other opinion.
+            <h2>"Nothing brings people<br>
+            &ensp;together like good food"</h2>
+
+            <p style="text-align:justify; padding-left:15px; padding-top:40px;">
+                Spot is a place where nearby restaurants can be found, reviews can be read 
+                and writted and also see where exactly the restaurant is located using google
+                maps. By making a review, other people are helped to choose the right place to 
+                eat, they can also see what is best on each place. Our community is a safe place
+                where everyone would is able to express his opinion without any judgement, but
+                please be polite and respect each other opinion.
             </p>
+            <br>
+            <div class="button" style="margin-left: 15px;">
+                <a  href="{% url 'rango:about' %}"><button style="padding: 8px; border-radius: 20%; background-color: #333333; color: ghostwhite;">Learn more</button></a>
+            </div>  
+
+          
         </div>
-        <div class="column">
-            <img src="{% static 'images/spot.png' %}"
-            alt="Picture of logo" />
+        <div class="column" style="margin-left: 200px;">
+            <img src="{% static 'images/phone-01.png' %}" alt="Illustration of a hand holding a phone" />
         </div>
-        <div class="button">
-        <a   href="{% url 'rango:about' %}"><button>Learn more</button></a>
-         
-        <br/>
-        </div>
-    
+       
     </div>
+
+
 {% endblock %}

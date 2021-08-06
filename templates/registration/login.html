@@ -3,17 +3,32 @@
     Login
 {% endblock %}
 {% block body_block %}
-<div class="login">
-<h1 class="active">Login</h1>
 
-<form method="post" action=".">
+<div class="login">
+    <div class="row">
+        <div class="column">
+            <h2 class="active"class="active" style="padding-left: 15px;">Login</h2>
+            
+        </div>
+
+        <div class="column">
+            <a href="{% url 'registration_register' %}"><h2 class="active" style="color: ghostwhite; padding-left: 20px;">Sign up</h2></a>
+            
+        </div>
+      
+    </div>  
+
+
+<form method="post" action="." >
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Log In" />
     <input type="hidden" name="next" value="{{ next }}" />
-    <br/>
+    <br>
+    <br>
+    
     Not registered?
-    <a href="{% url 'registration_register' %}">Register here!</a>
+    <a href="{% url 'registration_register' %}">Sign up here!</a>
     
 </form>
 

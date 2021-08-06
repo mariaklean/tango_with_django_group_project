@@ -12,5 +12,4 @@ urlpatterns=[
     path('browse/', views.browse, name='browse'),
     path('restaurant/<slug:restaurant_name_slug>', views.show_restaurant, name='show_restaurant'),
 
-
 ]

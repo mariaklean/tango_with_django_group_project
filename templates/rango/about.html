@@ -2,32 +2,35 @@
 {% load staticfiles %}
 
 {% block title_block %}
-  About Rango
+  About 
 {% endblock %}
 
 {% block body_block %} 
-    <h1>About us </h1>
+    
 
         <div class="row">
             <div class="column">
-                <p>
+                <h2 style="margin-left: 10px;">About </h2>
+
+                <p style="text-align:justify; padding-left:15px; padding-top:30px;">
                 This project has been made by Pythoneers in Action. A team of 4 postgraduate students at University of Glasgow.
                 Let's find out some more information about each one:
                 Maria has previously studied Mathematics and now is doing 
                 a software Development master. She likes cooking and hanging out with friends
                 </p>
-                <p>Visits: {{ visits }}</p>
-            </div>
-            <div class="column">
-                <img src="{% static 'images/gla.jpg' %}"
-                alt="Picture of rango" /> <!-- New line -->
-               <!-- <img src="http://127.0.0.1:8000/media/cat.jpg"
-                alt="Picture of a Cat." /> -->
-                <h3>Contact Us</h3>
+               <br>
+               <h5 style="margin-left: 10px; margin-top: 50px;">Contact Us</h5>
                 <ul>
-                    <li>Telephone: 1234456</li>
-                    <li>Address: asdfgghh </li>
+                    <li>Telephone: 07911 123456</li>
+                    <li>Address: Road Fratton PORTSMOUTH Hampshire, PO1 1AA, UNITED KINGDOM </li>
                 </ul>
+                
+            </div>
+
+            <div class="column" style="margin-left: 80px;">
+                <img src="{% static 'images/about2-02.png' %}" alt="Illustration of people" /> 
+                
+               
             </div>
           
         </div>       

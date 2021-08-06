@@ -9,9 +9,9 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5">
-    <link rel="icon" href="{% static 'images/spot.png' %}">
+    <link rel="icon" href="{% static 'images/spot_logo.png' %}">
     <title>
-        Rango - {% block title_block %}How to Tango with Django!{% endblock %}
+        Spot - {% block title_block %}How to Tango with Django!{% endblock %}
     </title>
     <!-- Bootstrap core CSS -->
     <link href="https://getbootstrap.com/docs/4.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
@@ -25,40 +25,44 @@
     
     <body>
         <header>
-            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark p-0">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <img class="imglogo" src="{% static 'images/logo.png' %}">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item"><a class="nav-link" href="{% url 'rango:index' %}">Home</a></li>
-                        <li class="nav-item "><a class="nav-link" href="{% url 'rango:about' %}">About</a></li>
-                        {% if user.is_authenticated %}
-                         <li class="nav-item "><a class="nav-link" href="{% url 'rango:browse' %}">Browse</a></li>
-                         <li class="nav-item"><a class="nav-link" href="{% url 'rango:add_category' %}">Add Category</a></li>
-                         <li class="nav-item"><a class="nav-link" href="{% url 'auth_logout' %}?next={% url 'rango:index' %}">Logout</a></li>
-                        {% else %} 
-                         <li class="nav-item"><a class="nav-link" href="{% url 'registration_register' %}">Register Here</a></li> 
-                         <li class="nav-item "><a class="nav-link" href="{% url 'auth_login' %}">Login</a></li> 
-                        {% endif %}
-                    </ul>
-                </div>
-            </nav>
+            <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+                <!-- Brand -->
+                <a href="{% url 'rango:index' %}"><img alt="imglogo" src="{% static 'images/logospot.png' %}" style="padding-right:720px; padding-left:20px; padding-top:10px;">
+
+                <!-- Links -->
+                <ul class="navbar-nav " style="padding-top:30px;">
+                    <!-- <input type="text" placeholder="Search.."> -->
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'rango:browse' %}">Restaurants</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'rango:about' %}">About</a>
+                  </li>
+                 
+                  <!-- Dropdown -->
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                      Account
+                    </a>
+                    <div class="dropdown-menu">
+                    {% if user.is_authenticated %}
+                      &emsp;&nbsp;&nbsp;hi {{ user.username }}!
+                      <a class="dropdown-item" href="#">My Account</a>
+                      <a class="dropdown-item" href="#">My Favourites</a>
+                      <a class="dropdown-item" href="{% url 'auth_logout' %}?next={% url 'rango:index' %}">Logout</a>
+                    {% else %} 
+                      <a class="dropdown-item" href="{% url 'auth_login' %}">Login</a>
+                      <a class="dropdown-item" href="{% url 'registration_register' %}">Sign up</a>
+                    {% endif %} 
+                    </div>
+                  </li>
+                </ul>                
+              </nav>
         </header>
         
-        <div class="container-fluid">
-            <div class="row">
-                <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-                    <div class="sidebar-sticky">
-                    {% block sidebar_block %}
-                        {% get_category_list  %}
-                    {% endblock %}
-                    </div>
-                </nav>
-                
-                <main role="main" class="col-md-9  ml-sm-auto col-lg-10 px-4">		
+        <div class="container-fluid" style="padding: 20px; margin-top: 120px;">
+               
+                <main role="main" style="padding-left:60px;">		
                     {% block body_block %}{% endblock %}
                     
                     <!-- FOOTER 
