@@ -9,7 +9,7 @@
 -->
 {% block body_block %}
 <br/>
-<strong><h2>Nearby restaurants</h2></strong>
+<strong><h2>&ensp;Nearby restaurants</h2></strong>
 <br/>
 {% if restaurants %}
   {% for restaurant in restaurants %}
@@ -17,7 +17,9 @@
       <a target="_blank" href="{% url 'rango:show_restaurant' restaurant.slug %}">
         <img src="/static/images/restaurants/{{restaurant.slug}}.jpg" alt="{{ restaurant.name }}" width="600" height="400">
       </a>
+      <div class="resname"><strong>{{ restaurant.name }}</strong></div>
       <div class="desc">{{ restaurant.description }}</div>
+      <div class="rev">{{review.rating}}</div>
     </div>
   {% endfor %}
 {% endif %}

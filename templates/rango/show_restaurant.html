@@ -10,33 +10,38 @@
 {% block body_block %}
     {% if restaurant %}
         <div class="Row">
-            <h1>{{ restaurant.name }}</h1>
+            <h2>{{ restaurant.name }}</h2>
             <br/>
         </div>
         <div class="row">
             <div class="column">
-                <img src="/static/images/restaurants/{{restaurant.slug}}.jpg" alt="{{restaurant.slug}}" width="600", height="400"/>
+                <img class="reimg" src="/static/images/restaurants/{{restaurant.slug}}.jpg" alt="{{restaurant.slug}}" width="600", height="400"/>
             </div>
             <div class="column">
-                <img src="{{ google_url }}">
+                <img class="goimg" src="{{ google_url }}">
             </div>
         </div>
+        <br>
+        <br>
+        <strong><h4>Read Reviews</h4></strong>
         {% if reviews %}
             {% for review in reviews %}
-                <div class="row">
-                    <div class="column">
-                        {{review.user}}
+
+                    <div class="userrev">
+                        <strong>{{review.user}}</strong>
                     </div>
-                    <div class="column">
+                    <div class="revrev">
                         {{review.review}}
                     </div>
-                    <div class="column">
-                        {{review.rating}}
+                    <div class="revrate">
+                        review rate: {{review.rating}}
                     </div>
-                </div>
+
+                    <br>
+               
             {% endfor %}
         {% endif %}
-        <form id="add_review_form" method="post" action="/rango/restaurant/{{ restaurant.slug }}">
+        <form class="reviewform" id="add_review_form" method="post" action="/rango/restaurant/{{ restaurant.slug }}">
             {% csrf_token %}
             {% csrf_token %}
             {% for hidden in form.hidden_fields %}
@@ -44,10 +49,13 @@
             {% endfor %}
             {% for field in form.visible_fields %}
                 {{ field.errors }}
+                <br>
                 {{ field.help_text }}
+                <br>
                 {{ field }}
             {% endfor %}
-            <input type="submit" name="submit" value="Add Page" />
+            <br/>
+            <input type="submit" name="submit" value="Add Review" />
         </form>
     {% endif %}
 {% endblock %}

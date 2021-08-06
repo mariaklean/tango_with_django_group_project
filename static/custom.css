@@ -1,15 +1,14 @@
 .gallery {
     display: grid;
-   /* grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: repeat(8, 5vw);
-    grid-gap: 15px;  */
    margin: 15px;
     float: left;
     width: 300px; 
 }
 
 .gallery:hover {
-  border: 1px solid #777;
+  box-shadow: 0px 50px 60px -10px #777;
+
+
 }
 
 .gallery img {
@@ -18,8 +17,17 @@
 }
 
 .desc {
-  padding: 15px;
-  text-align: left;
+  padding: 10px;
+  text-align: center;
+  font-size: 10pt;
+  
+}
+
+.resname{
+  margin-top: 5px;
+  font-size: 16pt;
+  text-align: center;
+
 }
 
  .row {
@@ -79,7 +87,7 @@ padding-top:40px;
   font-size: 12px;
   letter-spacing: 1px;
   position:relative;
-  height: 400px;
+  height: 500px;
   width: 405px;
   margin: auto;
   padding: 60px 60px;
@@ -95,7 +103,7 @@ padding-top:40px;
   text-align-last:justify;
   letter-spacing: 1px;
   position:relative;
-  height: 670px;
+  height: 700px;
   width: 400px;
   margin: auto;
   padding: 60px 60px;
@@ -163,8 +171,48 @@ span {
 }
 
 
+.button{
+padding: 8px; 
+margin-left: 15pt;
+border-radius: 20%; 
+color: ghostwhite;
+background: #333333 ;
+}
+
+.taccount{
+  margin-left: 15px;}
+
+  .accp{
+    margin-left: 15px;
+  }
+
+.userrev{
+padding-bottom: 2px;
+border-style:solid;
+border-color: lightgrey;
+background-color: lightgrey;
+border-radius: 4px;
+}
+
+/* .revrate{
+  border-bottom: 0.5px solid lightslategray;
+} */
 
 
+.reimg{
+
+  max-width: 90%;
+  height: auto;
+  padding-left: 15px;
+
+}
+
+
+.goimg{
+  max-width: 80%;
+  height: auto;
+
+}
 
 
 
