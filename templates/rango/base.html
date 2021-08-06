@@ -47,7 +47,7 @@
                     <div class="dropdown-menu">
                     {% if user.is_authenticated %}
                       &emsp;&nbsp;&nbsp;hi {{ user.username }}!
-                      <a class="dropdown-item" href="#">My Account</a>
+                      <a class="dropdown-item" href="{% url 'rango:my_account' %}">My Account</a>
                       <a class="dropdown-item" href="#">My Favourites</a>
                       <a class="dropdown-item" href="{% url 'auth_logout' %}?next={% url 'rango:index' %}">Logout</a>
                     {% else %} 

@@ -12,10 +12,11 @@
  
 }
 
-.hi{
-background-color: red;    
+.pforpage{
+text-align:justify; 
+padding-left:15px; 
+padding-top:40px;
 }
-
 
 .login {
   background-color: #333333;
