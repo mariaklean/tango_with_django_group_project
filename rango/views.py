@@ -180,6 +180,11 @@ def browse(request):
 
     return render(request, 'rango/browse.html', context=context_dict)
 
+@login_required
+def my_account(request):
+     return render(request, 'rango/my_account.html')
+
+    
 
 
 
