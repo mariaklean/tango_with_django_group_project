@@ -11,10 +11,11 @@
     {% if restaurant %}
         <div class="Row">
             <h1>{{ restaurant.name }}</h1>
+            <br/>
         </div>
         <div class="row">
             <div class="column">
-                <img src="/static/images/restaurants/{{restaurant.slug}}.jpg" alt="{{restaurant.slug}}" width="200px", height="200px"/>
+                <img src="/static/images/restaurants/{{restaurant.slug}}.jpg" alt="{{restaurant.slug}}" width="600", height="400"/>
             </div>
             <div class="column">
                 <img src="{{ google_url }}">
@@ -36,6 +37,4 @@
             </div>
         {% endfor %}
     {% endif %}
-
-
 {% endblock %}

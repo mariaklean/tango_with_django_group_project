@@ -66,7 +66,7 @@ def show_restaurant(request, restaurant_name_slug):
     params = {
         'center': str(location.latitude)+','+str(location.longitude),
         'zoom': '16',
-        'size': '500x400',
+        'size': '600x400',
         'key': 'AIzaSyAbk3bAYXqPu8jSvHbBb-BBDfEbgBtiXJ8',
         'markers': 'color:red|'+str(location.latitude)+','+str(location.longitude),
     }
@@ -85,8 +85,6 @@ def show_restaurant(request, restaurant_name_slug):
         context_dict['reviews'] = None
 
     return render(request, 'rango/show_restaurant.html', context=context_dict)
-
-
 
 
 def show_category(request, category_name_slug):
@@ -176,7 +174,11 @@ def add_page(request, category_name_slug):
 
 @login_required
 def browse(request):
-    return render(request, 'rango/browse.html')
+    context_dict = {}
+    restaurants = Restaurant.objects.all()
+    context_dict['restaurants'] = restaurants
+
+    return render(request, 'rango/browse.html', context=context_dict)
 
 
 # Use the login_required() decorator to ensure only those logged in can
