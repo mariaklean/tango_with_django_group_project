@@ -3,15 +3,32 @@
   Sign up
 {% endblock %}
 
-
 {% block body_block %}
-    <h1>Sign up</h1>
+    
 
-<div class="signin">
-<form method="post" action=".">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Register" />
-</form>
-</div>
+<div class="signup">
+  <div class="row">
+      <div class="column">
+        <a href="{% url 'auth_login' %}"><h2 class="active" style="color: ghostwhite; padding-left: 20px;">Login</h2></a>
+          
+      </div>
+
+      <div class="column">
+          <a href="{% url 'registration_register' %}"><h2 class="active" style="color: ghostwhite; padding-left: 20px;">Sign up</h2></a>
+          
+      </div>
+      <form method="post" action="." >
+      <div class="input" "">
+        {% csrf_token %}
+        <br/>
+        {{ form.as_p }}
+        <br/>
+      </div>
+        <input type="submit" value="Register" />
+    </form>
+    
+  </div>  
+
+
+
 {% endblock %}
