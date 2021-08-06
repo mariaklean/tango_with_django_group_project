@@ -122,12 +122,6 @@ def browse(request):
 def my_account(request):
      return render(request, 'rango/my_account.html')
 
-    
-
-
-
-# Use the login_required() decorator to ensure only those logged in can
-# access the view.
 
 # A helper method
 def get_server_side_cookie(request, cookie, default_val=None):
