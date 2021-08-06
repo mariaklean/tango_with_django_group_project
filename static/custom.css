@@ -5,7 +5,7 @@
     grid-gap: 15px;  */
    margin: 15px;
     float: left;
-    width: 180px; 
+    width: 300px; 
 }
 
 .gallery:hover {
@@ -29,6 +29,42 @@
   flex: 10%; 
  
 }
+
+.navbar-nav{
+padding-top:30px;
+} 
+
+.container-fluid{
+ padding: 20px;}
+
+ .main{
+   padding-left:60px; 
+   padding-top: 160px;}
+
+
+.About{
+ margin-left: 10px;
+}
+
+.pAbout{
+  text-align:justify; 
+  padding-left:15px; 
+  padding-top:30px;}
+
+.imgAbout{
+  margin-left: 70px;
+
+
+}
+.contact{
+  margin-left: 10px; 
+  margin-top: 50px;}
+
+
+.tLogin{
+  padding-left: 15px;
+  border-bottom: 2px solid #BEBEBE;}
+
 
 .pforpage{
 text-align:justify; 
@@ -57,7 +93,14 @@ form {
 
 .active {
   border-bottom: 2px solid #BEBEBE;
+  color: ghostwhite; 
+  padding-left: 20px;
   
+}
+
+.imgIndex{
+  margin-left: 140px;
+
 }
 
 
