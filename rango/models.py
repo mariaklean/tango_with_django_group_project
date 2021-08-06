@@ -29,7 +29,7 @@ class Review(models.Model):
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
     review = models.TextField(max_length=NAME_MAX_LENGTH)
-    rating = models.IntegerField(default=0)
+    rating = models.PositiveIntegerField(default=0)
 
     class Meta:
         verbose_name_plural = 'Reviews'

@@ -1,7 +1,7 @@
 from rango.models import Category, Restaurant, Review
 from django.shortcuts import render
 from rango.models import Page
-from rango.forms import CategoryForm
+from rango.forms import CategoryForm, ReviewForm
 from django.urls import reverse
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
@@ -53,6 +53,10 @@ def about(request):
 def show_restaurant(request, restaurant_name_slug):
     context_dict = {}
 
+    user = None
+    if request.user.is_authenticated:
+        user = request.user
+
     restaurant = Restaurant.objects.get(slug=restaurant_name_slug)
     location = restaurant.location
     print(restaurant.id)
@@ -76,13 +80,43 @@ def show_restaurant(request, restaurant_name_slug):
     url = url_base+encoded_params
     context_dict['google_url'] = url
 
-
     try:
         context_dict['restaurant'] = restaurant
         context_dict['reviews'] = reviews
     except Restaurant.DoesNotExist:
         context_dict['restaurant'] = None
         context_dict['reviews'] = None
+
+    # add form to create new comments
+
+    try:
+        restaurant = Restaurant.objects.get(slug=restaurant_name_slug)
+    except:
+        restaurant = None
+
+    if restaurant is None:
+        return redirect('/rango/')
+
+    form = ReviewForm()
+
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+
+        if form.is_valid():
+            if restaurant:
+                review = form.save(commit=False)
+                review.restaurant = restaurant
+                review.user = user
+                review.save()
+
+                return redirect(reverse('rango:show_restaurant',
+                                        kwargs={'restaurant_name_slug':
+                                                    restaurant_name_slug}))
+        else:
+            print(form.errors)
+
+    context_dict['form'] = form
+    context_dict['restaurant'] = restaurant
 
     return render(request, 'rango/show_restaurant.html', context=context_dict)
 

@@ -21,20 +21,33 @@
                 <img src="{{ google_url }}">
             </div>
         </div>
-    {% endif %}
-    {% if reviews %}
-        {% for review in reviews %}
-            <div class="row">
-                <div class="column">
-                    {{review.user}}
+        {% if reviews %}
+            {% for review in reviews %}
+                <div class="row">
+                    <div class="column">
+                        {{review.user}}
+                    </div>
+                    <div class="column">
+                        {{review.review}}
+                    </div>
+                    <div class="column">
+                        {{review.rating}}
+                    </div>
                 </div>
-                <div class="column">
-                    {{review.review}}
-                </div>
-                <div class="column">
-                    {{review.rating}}
-                </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        {% endif %}
+        <form id="add_review_form" method="post" action="/rango/restaurant/{{ restaurant.slug }}">
+            {% csrf_token %}
+            {% csrf_token %}
+            {% for hidden in form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+            {% for field in form.visible_fields %}
+                {{ field.errors }}
+                {{ field.help_text }}
+                {{ field }}
+            {% endfor %}
+            <input type="submit" name="submit" value="Add Page" />
+        </form>
     {% endif %}
 {% endblock %}

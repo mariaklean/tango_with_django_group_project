@@ -1,9 +1,7 @@
 from django import forms
-from django.forms import fields
-from django.forms.widgets import HiddenInput
-from rango.models import Page, Category
+from rango.models import Page, Category, Review, UserProfile
 from django.contrib.auth.models import User
-from rango.models import UserProfile
+
 
 class CategoryForm(forms.ModelForm):
     name = forms.CharField(max_length =Category.NAME_MAX_LENGTH, help_text="Please enter the categry name.")
@@ -37,6 +35,7 @@ class PageForm(forms.ModelForm):
             cleaned_data['url'] = url
         return cleaned_data
 
+
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
     
@@ -44,7 +43,17 @@ class UserForm(forms.ModelForm):
         model = User
         fields = ('username', 'email', 'password',)
 
+
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ('website', 'picture',)
+
+
+class ReviewForm(forms.ModelForm):
+    rating = forms.IntegerField(initial=0, max_value=5, min_value=0)
+    review = forms.Textarea()
+
+    class Meta:
+        model = Review
+        fields = ('rating', 'review',)
