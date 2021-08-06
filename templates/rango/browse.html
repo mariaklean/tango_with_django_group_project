@@ -7,29 +7,20 @@
 
 <!-- Browse page will be the page where the results of the nearby restaurants will appear.
 -->
-{% block body_block %} 
-<h2>Below you can see your nearby restaurants</h2>
-<div class="gallery">
-  <a target="_blank" href="{% static 'images/spot.png' %}">
-    <img src="{% static 'images/spot.png' %}" alt="Cinque Terre" width="600" height="400">
-  </a>
-  <div class="desc">Add a description of the image here</div>
-</div>
-
-<div class="gallery">
-  <a target="_blank" href="https://www.google.com">
-    <img src="{% static 'images/spot.png' %}" alt="Cinque Terre" width="600" height="400">
-  </a>
-  <div class="desc">Add a description of the image here</div>
-</div>
-
-<div class="gallery">
-  <a target="_blank" href="https://www.google.com">
-    <img src="{% static 'images/spot.png' %}" alt="Cinque Terre" width="600" height="400">
-  </a>
-  <div class="desc">Add a description of the image here</div>
-</div>
-
+{% block body_block %}
+<br/>
+<strong><h2>Nearby restaurants</h2></strong>
+<br/>
+{% if restaurants %}
+  {% for restaurant in restaurants %}
+    <div class="gallery">
+      <a target="_blank" href="{% url 'rango:show_restaurant' restaurant.slug %}">
+        <img src="/static/images/restaurants/{{restaurant.slug}}.jpg" alt="{{ restaurant.name }}" width="600" height="400">
+      </a>
+      <div class="desc">{{ restaurant.description }}</div>
+    </div>
+  {% endfor %}
+{% endif %}
 
 
 </div>

@@ -10,6 +10,7 @@ class Restaurant(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
     name = models.CharField(max_length=NAME_MAX_LENGTH, unique=True)
     rate = models.FloatField(default=0.0)
+    description = models.TextField(max_length=1000, default='this is a description')
     slug = models.SlugField(blank=True, unique=True)
 
     def save(self, *args, **kwargs):
