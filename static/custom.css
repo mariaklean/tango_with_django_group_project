@@ -8,6 +8,10 @@
     width: 180px; 
 }
 
+.menu {
+  align-items: right;
+}
+
 .gallery:hover {
   border: 1px solid #777;
 }
