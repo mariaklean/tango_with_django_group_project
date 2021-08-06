@@ -27,11 +27,10 @@
         <header>
             <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
                 <!-- Brand -->
-                <a href="{% url 'rango:index' %}"><img alt="imglogo" src="{% static 'images/logospot.png' %}" style="padding-right:720px; padding-left:20px; padding-top:10px;">
+                <a href="{% url 'rango:index' %}"><img alt="imglogo" src="{% static 'images/logospot.png' %}" style="padding-left:20px; padding-right: 720px; padding-top:10px;">
 
                 <!-- Links -->
-                <ul class="navbar-nav " style="padding-top:30px;">
-                    <!-- <input type="text" placeholder="Search.."> -->
+                <ul class="navbar-nav" style="padding-top:30px;">
                   <li class="nav-item">
                     <a class="nav-link" href="{% url 'rango:browse' %}">Restaurants</a>
                   </li>
@@ -60,14 +59,14 @@
               </nav>
         </header>
         
-        <div class="container-fluid" style="padding: 20px; margin-top: 120px;">
+        <div class="container-fluid" style="padding: 20px;">
                
-                <main role="main" style="padding-left:60px;">		
+                <main role="main" style="padding-left:60px; padding-top: 160px;">		
                     {% block body_block %}{% endblock %}
                     
-                    <!-- FOOTER 
-                    <footer>
-                        <p class="float-right"><a href="#">Back to top</a></p>
+                    <!-- FOOTER  -->
+                    <!-- <footer >
+                        <p class="float-right" style="color: #333333;"><a href="#">Back to top</a></p>
                         <p>&copy; 2020 Tango With Django 2 &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
                     </footer> -->
                 </main>
