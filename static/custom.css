@@ -5,6 +5,10 @@
     width: 300px; 
 }
 
+.menu {
+  align-items: right;
+}
+
 .gallery:hover {
   box-shadow: 0px 50px 60px -10px #777;
 
